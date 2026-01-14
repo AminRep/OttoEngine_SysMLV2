@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<!-- saved from url=(0085)https://sim4edu.com/reading/kerml-sysml/sysml-statestructuremodeling-intro#Attributes -->
+<html xmlns="http://www.w3.org/1999/xhtml" class="role-ebook-page" data-qb-installed="true"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Chapter 12. Modeling the State Structure of a System</title><link href="./attributeModeling_files/pageNavigation.css" rel="stylesheet" type="text/css"><meta content="width=device-width, initial-scale=1" name="viewport"><link href="./attributeModeling_files/ebook.css" rel="stylesheet" type="text/css"><link href="https://sim4edu.com/reading/kerml-sysml/_res/icons" type="inode/directory"><script defer="" data-domain="sim4edu.com" data-api="/plau/api/event" src="./attributeModeling_files/script.js.download"></script><style>
+aside.ad {
+  display: none;
+  margin: unset;
+  background-color: unset;
+  border-style: none;
+}
+@media only screen and (min-width: 1000px) {
+  aside.ad {
+    display: block;
+    position: fixed;
+    top: 17%; right: 3%;
+    width: 12em;
+  }
+}
+aside > div {
+  animation: showUpAnDisappear 10s infinite alternate;
+}
+@keyframes showUpAnDisappear {
+    from { opacity:0; /* visibility:visible; */}
+    to { opacity:1; /*visibility:hidden; */}
+}
+</style><style type="text/css">.lf-progress {
+  -webkit-appearance: none;
+  -moz-apperance: none;
+  width: 100%;
+  /* margin: 0 10px; */
+  height: 4px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.lf-progress:focus {
+  outline: none;
+  border: none;
+}
+.lf-progress::-moz-range-track {
+  cursor: pointer;
+  background: none;
+  border: none;
+  outline: none;
+}
+.lf-progress::-webkit-slider-thumb {
+  -webkit-appearance: none !important;
+  height: 13px;
+  width: 13px;
+  border: 0;
+  border-radius: 50%;
+  background: #0fccce;
+  cursor: pointer;
+}
+.lf-progress::-moz-range-thumb {
+  -moz-appearance: none !important;
+  height: 13px;
+  width: 13px;
+  border: 0;
+  border-radius: 50%;
+  background: #0fccce;
+  cursor: pointer;
+}
+.lf-progress::-ms-track {
+  width: 100%;
+  height: 3px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+.lf-progress::-ms-fill-lower {
+  background: #ccc;
+  border-radius: 3px;
+}
+.lf-progress::-ms-fill-upper {
+  background: #ccc;
+  border-radius: 3px;
+}
+.lf-progress::-ms-thumb {
+  border: 0;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background: #0fccce;
+  cursor: pointer;
+}
+.lf-progress:focus::-ms-fill-lower {
+  background: #ccc;
+}
+.lf-progress:focus::-ms-fill-upper {
+  background: #ccc;
+}
+.lf-player-container :focus {
+  outline: 0;
+}
+.lf-popover {
+  position: relative;
+}
+
+.lf-popover-content {
+  display: inline-block;
+  position: absolute;
+  opacity: 1;
+  visibility: visible;
+  transform: translate(0, -10px);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  transition: all 0.3s cubic-bezier(0.75, -0.02, 0.2, 0.97);
+}
+
+.lf-popover-content.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(0, 0px);
+}
+
+.lf-player-btn-container {
+  display: flex;
+  align-items: center;
+}
+.lf-player-btn {
+  cursor: pointer;
+  fill: #999;
+  width: 14px;
+}
+
+.lf-player-btn.active {
+  fill: #555;
+}
+
+.lf-popover {
+  position: relative;
+}
+
+.lf-popover-content {
+  display: inline-block;
+  position: absolute;
+  background-color: #ffffff;
+  opacity: 1;
+
+  transform: translate(0, -10px);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  transition: all 0.3s cubic-bezier(0.75, -0.02, 0.2, 0.97);
+  padding: 10px;
+}
+
+.lf-popover-content.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(0, 0px);
+}
+
+.lf-arrow {
+  position: absolute;
+  z-index: -1;
+  content: '';
+  bottom: -9px;
+  border-style: solid;
+  border-width: 10px 10px 0px 10px;
+}
+
+.lf-left-align,
+.lf-left-align .lfarrow {
+  left: 0;
+  right: unset;
+}
+
+.lf-right-align,
+.lf-right-align .lf-arrow {
+  right: 0;
+  left: unset;
+}
+
+.lf-text-input {
+  border: 1px #ccc solid;
+  border-radius: 5px;
+  padding: 3px;
+  width: 60px;
+  margin: 0;
+}
+
+.lf-color-picker {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 90px;
+}
+
+.lf-color-selectors {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.lf-color-component {
+  display: flex;
+  flex-direction: row;
+  font-size: 12px;
+  align-items: center;
+  justify-content: center;
+}
+
+.lf-color-component strong {
+  width: 40px;
+}
+
+.lf-color-component input[type='range'] {
+  margin: 0 0 0 10px;
+}
+
+.lf-color-component input[type='number'] {
+  width: 50px;
+  margin: 0 0 0 10px;
+}
+
+.lf-color-preview {
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 5px;
+}
+
+.lf-preview {
+  height: 60px;
+  width: 60px;
+}
+
+.lf-popover-snapshot {
+  width: 150px;
+}
+.lf-popover-snapshot h5 {
+  margin: 5px 0 10px 0;
+  font-size: 0.75rem;
+}
+.lf-popover-snapshot a {
+  display: block;
+  text-decoration: none;
+}
+.lf-popover-snapshot a:before {
+  content: '⥼';
+  margin-right: 5px;
+}
+.lf-popover-snapshot .lf-note {
+  display: block;
+  margin-top: 10px;
+  color: #999;
+}
+.lf-player-controls > div {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+.lf-player-controls > div:first-child {
+  margin-left: 0px;
+}
+.lf-player-controls > div:last-child {
+  margin-right: 0px;
+}
+</style><style type="text/css">.lf-progress {
+  -webkit-appearance: none;
+  -moz-apperance: none;
+  width: 100%;
+  /* margin: 0 10px; */
+  height: 4px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.lf-progress:focus {
+  outline: none;
+  border: none;
+}
+.lf-progress::-moz-range-track {
+  cursor: pointer;
+  background: none;
+  border: none;
+  outline: none;
+}
+.lf-progress::-webkit-slider-thumb {
+  -webkit-appearance: none !important;
+  height: 13px;
+  width: 13px;
+  border: 0;
+  border-radius: 50%;
+  background: #0fccce;
+  cursor: pointer;
+}
+.lf-progress::-moz-range-thumb {
+  -moz-appearance: none !important;
+  height: 13px;
+  width: 13px;
+  border: 0;
+  border-radius: 50%;
+  background: #0fccce;
+  cursor: pointer;
+}
+.lf-progress::-ms-track {
+  width: 100%;
+  height: 3px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+.lf-progress::-ms-fill-lower {
+  background: #ccc;
+  border-radius: 3px;
+}
+.lf-progress::-ms-fill-upper {
+  background: #ccc;
+  border-radius: 3px;
+}
+.lf-progress::-ms-thumb {
+  border: 0;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background: #0fccce;
+  cursor: pointer;
+}
+.lf-progress:focus::-ms-fill-lower {
+  background: #ccc;
+}
+.lf-progress:focus::-ms-fill-upper {
+  background: #ccc;
+}
+.lf-player-container :focus {
+  outline: 0;
+}
+.lf-popover {
+  position: relative;
+}
+
+.lf-popover-content {
+  display: inline-block;
+  position: absolute;
+  opacity: 1;
+  visibility: visible;
+  transform: translate(0, -10px);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  transition: all 0.3s cubic-bezier(0.75, -0.02, 0.2, 0.97);
+}
+
+.lf-popover-content.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(0, 0px);
+}
+
+.lf-player-btn-container {
+  display: flex;
+  align-items: center;
+}
+.lf-player-btn {
+  cursor: pointer;
+  fill: #999;
+  width: 14px;
+}
+
+.lf-player-btn.active {
+  fill: #555;
+}
+
+.lf-popover {
+  position: relative;
+}
+
+.lf-popover-content {
+  display: inline-block;
+  position: absolute;
+  background-color: #ffffff;
+  opacity: 1;
+
+  transform: translate(0, -10px);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  transition: all 0.3s cubic-bezier(0.75, -0.02, 0.2, 0.97);
+  padding: 10px;
+}
+
+.lf-popover-content.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(0, 0px);
+}
+
+.lf-arrow {
+  position: absolute;
+  z-index: -1;
+  content: '';
+  bottom: -9px;
+  border-style: solid;
+  border-width: 10px 10px 0px 10px;
+}
+
+.lf-left-align,
+.lf-left-align .lfarrow {
+  left: 0;
+  right: unset;
+}
+
+.lf-right-align,
+.lf-right-align .lf-arrow {
+  right: 0;
+  left: unset;
+}
+
+.lf-text-input {
+  border: 1px #ccc solid;
+  border-radius: 5px;
+  padding: 3px;
+  width: 60px;
+  margin: 0;
+}
+
+.lf-color-picker {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 90px;
+}
+
+.lf-color-selectors {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.lf-color-component {
+  display: flex;
+  flex-direction: row;
+  font-size: 12px;
+  align-items: center;
+  justify-content: center;
+}
+
+.lf-color-component strong {
+  width: 40px;
+}
+
+.lf-color-component input[type='range'] {
+  margin: 0 0 0 10px;
+}
+
+.lf-color-component input[type='number'] {
+  width: 50px;
+  margin: 0 0 0 10px;
+}
+
+.lf-color-preview {
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 5px;
+}
+
+.lf-preview {
+  height: 60px;
+  width: 60px;
+}
+
+.lf-popover-snapshot {
+  width: 150px;
+}
+.lf-popover-snapshot h5 {
+  margin: 5px 0 10px 0;
+  font-size: 0.75rem;
+}
+.lf-popover-snapshot a {
+  display: block;
+  text-decoration: none;
+}
+.lf-popover-snapshot a:before {
+  content: '⥼';
+  margin-right: 5px;
+}
+.lf-popover-snapshot .lf-note {
+  display: block;
+  margin-top: 10px;
+  color: #999;
+}
+.lf-player-controls > div {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+.lf-player-controls > div:first-child {
+  margin-left: 0px;
+}
+.lf-player-controls > div:last-child {
+  margin-right: 0px;
+}
+</style></head><body><header class="page-navigation"><table><tbody><tr><td class="page-navigation-to-previous"><a href="https://sim4edu.com/reading/kerml-sysml/sysml-partintro"><span class="page-navigation-to-previous-icon" title="Previous page
+Part III. The Systems Modeling Language (SysML)"></span></a></td><td class="page-navigation-previous"><span>Part III. The Systems Modeling Language (SysML)</span></td><td class="page-navigation-current"><span>Chapter 12. Modeling the State Structure of a System</span> <span class="page-navigation-current-page">(19/39)</span><a href="https://sim4edu.com/reading/kerml-sysml/toc"><span class="page-navigation-to-toc-icon" title="Table of Contents
+Table of Contents"></span></a><a href="https://sim4edu.com/reading/kerml-sysml/_index"><span class="page-navigation-to-index-icon" title="Index
+Index"></span></a></td><td class="page-navigation-next"><span>Chapter 13. Modeling the Dynamics of a System</span></td><td class="page-navigation-to-next"><a href="https://sim4edu.com/reading/kerml-sysml/introdynamicssysml"><span class="page-navigation-to-next-icon" title="Next page
+Chapter 13. Modeling the Dynamics of a System"></span></a></td></tr></tbody></table></header><main><section class="role-chapter" id="SysML-StateStructureModeling-Intro"><h1 class="role-chapter-title"><span class="role-label">Chapter <span class="role-number">12</span>. </span>Modeling the State Structure of a System</h1><p>In SysML2, the state structure of a system is captured by modeling all types of items and parts the system consists of. This also includes modeling their attributes, subparts and any connections between them, as well as their ports and any interfaces between them.</p><p>SysML's state structure modeling concepts include <em>Attributes</em>, <em>Enumerations</em>, <i>Occurrences</i>, <i>Items</i>, <i>Parts</i>, <i>Connections</i>, <i>Ports</i> and <i>Interfaces</i>, as shown in the following diagram.</p> <section class="role-section1" id="Attributes"><h2 class="role-section1-title"><span class="role-label"><span class="role-number">12.1</span>. </span>Attributes and Enumerations</h2><p>In SysML v2, <em>attributes</em> (officially called "attribute usages") are data-valued features, corresponding to data-valued properties in OWL, as opposed to occurrence-valued features, such as <em>item properties</em> (or "usages") and <em>part properties</em> (or "usages"), corresponding to object-valued properties in OWL.</p><p>In the simplest case, an attribute is declared with a KerML data type as its range (such as the primitive data types <i>String</i>, <i>Boolean</i>, <i>Integer</i>, <i>Natural</i>, <i>Rational</i>, or <i>Real</i>), as in the following example:</p><pre>item def Person {
+  <b>attribute</b> name : String;
+  <b>attribute</b> age : Natural;
+}</pre><p>What is called an "attribute definition" in SysML2 is, in fact, a data type definition (defining a set of data values). In the following example, the data type <i>NegativeInteger</i> is defined by constraining the values of the primitive KerML data type <i>Integer</i>:</p><pre><b>attribute</b> <b>def</b> NegativeInteger specializes Integer {
+  assert constraint { that &lt; 0 }
+}</pre><p>Notice that the keyword <i>that</i> has to be used here for referring to the instances of the containing data type definition of <i>NegativeInteger</i> in the constraint body (see also <a class="role-section1-ref" href="https://sim4edu.com/reading/kerml-sysml/introlibraries#IndexicalVariables"><span class="role-label">Section <span class="role-number">11.1</span></span></a>).</p><h3>Quantity Types and Quantity Attributes</h3><p>The ISQ package of the <em>Quantities and Units Domain Library</em> of SysML v2 provides a number of predefined generic quantity attributes (or "attribute usages"), like for instance,</p><pre>attribute length : LengthValue;
+attribute mass : MassValue;
+attribute time : TimeValue;</pre><p>Notice that the domain (or featuring type) of these predefined attributes is the classifier <i>Anything</i>, so they are inherited by any classifier whenever the ISQ package is imported in a system model. For more on quantities and units, see <a class="role-section1-ref" href="https://sim4edu.com/reading/kerml-sysml/sysml-statestructuremodeling-intro#IntroQuantities"><span class="role-label">Section <span class="role-number">12.2</span></span></a>.</p><h3>Enumerations</h3><p>An <em>enumeration definition</em> is a kind of data type that defines a (typically small) set of names as its <em>enumerated values</em>, like the names "male" and "female" for the two biological sexes in the following example:</p><pre><b>enum def</b> Sex {
+  <b>enum</b> male;
+  <b>enum</b> female;
+}</pre><p>The declaration of an enumerated value may omit the <i>enum</i> keyword:</p><pre><b>enum def</b> Sex { male; female; }</pre><p>An enumeration definition can be used for declaring an attribute the values of which are limited to the defined set of enumerated values. For instance, in the following example, an instance of the item type <i>Person</i> must have either "male" or "female" as the value of its <i>sex</i> attribute:</p><pre>item def Person {
+  attribute name : String;
+  attribute sex : Sex;
+}
+item def Female specializes Person {
+  attribute redefines sex = Sex::female;
+}</pre><p>Notice how the attribute <i>sex</i> is bound to the specific value "female" by means of redefinition, effectively expressing the constraint that a female person is a person having the <i>sex</i> attribute value "female". </p><p>An enumeration definition may subclassify other data types. However, an enumeration definition must not subclassify another enumeration definition.</p><blockquote class="role-attention"><p>In the SysML spec, enumerations are considered as special kinds of <em>variations</em> and its enumerated values as its <em>variants</em>. However, there is no need for, and no gain of, such a treatment. It's preferable to simply stick to the classical view of an enumeration.</p></blockquote></section><section class="role-section1" id="IntroQuantities"><h2 class="role-section1-title"><span class="role-label"><span class="role-number">12.2</span>. </span>Quantity Values and Quantity Types</h2><p>System models need a way to represent quantities and their measurement references (units, scales, coordinate frames) based on established international standards, in particular the <em>International System of Quantities (<a href="https://en.wikipedia.org/wiki/ISO/IEC_80000">ISQ</a>)</em>, the <em>International System of Units (<a href="https://www.bipm.org/en/publications/si-brochure/">SI</a>)</em> and the <em><a href="https://www.nist.gov/physical-measurement-laboratory/nist-guide-si-appendix-b">US Customary Units</a></em>.</p><p>ISQ defines seven base quantity types: Length, Mass, Time, Electric Current, Thermodynamic Temperature, Amount of Substance, and Luminous Intensity.</p><p>A <em>quantity value</em> is defined as an ordered pair of a numerical value and a <em>measurement reference</em>. In the simplest case, a measurement reference is a <em>simple unit</em> such as the length unit "m". </p><p>For example, a length value expressed as 15 mm is of the same type (LengthValue) as a length value expressed as 0.015 m. An attribute can be initialized with a length value in the following way:</p><pre>attribute width : LengthValue := 0.015 [m];</pre><p>Or, using the length unit of mm: </p><pre>attribute width : LengthValue := 15 [mm];</pre><blockquote class="role-attention"><p>In SysML v1, a quantity value property type combines a quantity type and a unit. Consequently, using different units of the same quantity types, such as gram and kilogram, requires defining different quantity types.</p><p>Existing quantity ontologies/schemas (such as <a href="http://qudt.org/">QUDT</a> or <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Quantities/QuantitiesAndUnits/">FIBO Quantities and Units</a>) do not support measurement scales and have only limited support for quantity dimensions, vector/tensor quantities and coordinate frames, which are needed for quantifying vectors and tensors. Interval measurement scales are needed, e.g., for time instants and durations. An example of an ordinal measurement scale is the <em>Rockwell C hardness</em> scale. A logarithmic measurement scale is needed, e.g., for the <em>sound pressure level</em> measured in dB, and a cyclic measurement scale is needed, e.g., for the <em>rotation angle</em> measured in angular degrees.</p></blockquote><p>The <em>Quantities and Units Domain Library</em> of SysML v2 defines a comprehensive set of quantity concepts including the ISQ and SI concepts, the most important of which are:</p><ol><li><i>LengthValue</i> and <i>LengthUnit</i>,</li><li><i>MassValue</i> and <i>MassUnit</i>,</li><li><i>TimeValue</i> and <i>TimeUnit</i>,</li><li><i>ElectricCurrentValue</i> and <i>ElectricCurrentUnit</i>,</li><li><i>ThermodynamicTemperatureValue</i> and <i>ThermodynamicTemperatureUnit</i>.</li></ol><figure id="IntroQuantities__lof__6" style="float:right; margin-left:1em"><figcaption><span class="role-label">Figure <span class="role-number">12-1</span>. </span>A fragment of the Quantities and Units Domain Library showing Length and Mass concepts.</figcaption><div><img alt="???" src="./attributeModeling_files/ISQ.svg" width="700"></div></figure><h3>Importing SI Units and ISQ Quantity Types </h3><p>For being able to use predefined units and predefined unit prefixes, such as <i>milli</i>, the standard library SI is imported first with all its elements. Likewise, for being able to use predefined quantity value types and predefined quantity unit types, such as <i>ElectricCurrentUnit</i>, the standard library ISQ is imported like so:</p><pre>private import SI::*;
+private import ISQ::*;</pre><p>In the sequel, for simplicity, these import statements will often be omitted.</p><h3>Typing Attributes by Quantity Types versus Subsetting Them from Predefined Quantity Attributes</h3><p>Instead of typing an attribute by an ISQ quantity type like</p><pre>attribute width : LengthValue;</pre><p>it can alternatively be subsetted from a corresponding quantity attribute predefined in the ISQ library:</p><pre>attribute width  LengthValue;</pre><h3>User-Defined Units</h3><p>Units (such as <i>mA</i> for milliampere) that are not predefined in the standard library SI, have to be defined in a user model. Using unit prefixes (such as <i>milli</i>), which are predefined in the SI library, they can be defined like so:</p><pre>attribute mA : ElectricCurrentUnit = milli * A;</pre><p>Such a unit definition can then be used when defining variables <i>highLevel</i> in the form of an attribute as follows:</p><pre>attribute highLevel : ElectricCurrentValue = 20.0 [mA];</pre><h3>Example: Defining the Composition of Atoms</h3><p>The following example is based on a <a href="https://groups.google.com/g/sysml-v2-release/c/46cKv5k9I4Q/m/tDbT0KkpEgAJ">model of a PWR nuclear power plant</a> presented in the Google Group "SysML-v2-Release". It illustrates the use of units, quantity types and quantity values (and provides an example of a constraint).</p><pre>// dalton (unified atomic mass unit)
+attribute <b>Da</b> : MassUnit = 1.66054*10^-27 [kg];
+// elementary charge
+attribute <b>e</b> : ElectricChargeUnit = 1.6*10^-19 [C];
+part def <b>Particle</b> {
+  attribute mass : MassValue;
+  attribute charge : ElectricChargeValue;
+}
+part def <b>Proton</b> specializes Particle {
+  redefines mass = 1.0072766 [Da];
+  redefines charge = 1[e];
+}
+part def <b>Neutron</b> specializes Particle {
+  redefines mass = 1.008665 [Da];
+  redefines charge = 0 [e];
+}
+part def <b>Electron</b> specializes Particle {
+  redefines mass = 1/1837 [Da];
+  redefines charge = -1 [e];
+}
+part def <b>Atom</b> {
+  // an atom has up to 118 protons
+  part proton[1..118] : Proton;
+  // an atom has up to 176 neutrons
+  part neutron[0..176] : Neutron;
+  // an atom has up to 118 electrons
+  part electron[1..118] : Electron;
+  attribute mass : MassValue = proton.mass + neutron.mass + electron.mass;
+  // an atom must have the same number of protons and electrons
+  assert constraint PnE { size( proton) == size( electron) }
+}</pre></section><section class="role-section1" id="Items"><h2 class="role-section1-title"><span class="role-label"><span class="role-number">12.3</span>. </span>Items and Parts</h2><p>In SysML2, objects are called <em>items</em>. A <i>part</i> is an item that is a system or a part of a system or of another part. While parts are items that may perform actions, items that are not parts do not perform actions.</p><p>An <i>item type definition</i> is a kind of <i>occurrence type definition</i>, while an item "usage" is an item-valued property. Quantities of continuous materials (where any spatial portion is the same kind of thing) are also considered to be items. Consequently, we may have item types like <i>Fuel</i> or <i>Sand</i>.</p><figure id="Items__lof__7"><figcaption><span class="role-label">Figure <span class="role-number">12-2</span>. </span>The predefined SysML2 classifier Item specializes the predefined KerML classifier Object.</figcaption><div><img alt="???" src="./attributeModeling_files/Item.svg" width="120"></div></figure><p>In the following example, there is an item type definition <i>Person</i> and a referential (non-composite) item property <i>driver</i>:</p><pre>item def Person;
+part def Vehicle {
+  attribute mass : Real;
+  ref item driver : Person;
+}</pre><p>A system is modeled as a part that is composed of parts, which may themselves have further composite structure. Parts may have <i>ports</i> that define the connection points at which those parts may be interconnected for allowing flows of signals/messages or of physical substances. Parts may also perform <i>actions</i> and exhibit <i>states</i>.</p><figure id="Items__lof__8"><figcaption><span class="role-label">Figure <span class="role-number">12-3</span>. </span>The predefined classifier Part specializes the predefined classifier Item.</figcaption><div><img alt="???" src="./attributeModeling_files/Part.svg" width="600"></div></figure><p>A part can represent any level of abstraction, such as a purely logical component, a physical component (with a part number), or some intermediate abstraction. Parts can also be used to represent different kinds of system components such as hardware components, software components, facilities, organizations, or users of a system.</p><p>In the following example, there are four part definitions (<i>Engine</i>, <i>Wheel</i>, <i>Person</i> and <i>Vehicle</i>), and there are three part properties (<i>eng</i>, <i>wheels</i>, and <i>driver</i>):</p><pre>part def Engine;
+part def Wheel;
+part def Person;
+part def Vehicle {
+  attribute mass : Real;
+  part eng : Engine;
+  part wheels[4] : Wheel;
+  ref part driver[0..1] : Person;
+}</pre><p>Notice that item properties and part properties, such as <i>Vehicle::eng</i> and <i>Vehicle::wheels</i> in the example above, are composite features by default, while the part property <i>Vehicle::driver</i> is declared as a referential (non-composite) feature, which implies that the driver of a vehicle is not necessarily destroyed when the vehicle is destroyed.</p><p>A part property is typically typed by a part type, but may also be typed by an item type.</p></section><section class="role-section1" id="PropertyValueRelationships"><h2 class="role-section1-title"><span class="role-label"><span class="role-number">12.4</span>. </span>Property Value Relationships</h2><p>A <em>property value relationship</em> (called "feature value" in the spec) is a special kind of binding connector that binds a (possibly <em>initial</em> or <em>default</em>) value to a property.</p><p>An example of a bound property value relationship, stating that a property's value is always obtained as the result of the value expression, and in this sense <em>derived</em>:</p><pre><b>derived</b> attribute averageScore : Rational <b>=</b> sum(scores)/size(scores);</pre><p>Notice that designating a bound property value relationship as <em>derived</em> is not required.</p><p>An example of an <em>initial</em> property value relationship, stating that a property's initial value is obtained as the result of the value expression (but may be changed subsequently):</p><pre>attribute count : Natural <b>:=</b> 0;</pre><p>An example of a bound property <em>default</em> value relationship:</p><pre>attribute cutoff : Integer <b>default</b> = 0.75 * averageScore;</pre><p>An example of an initial property <em>default</em> value relationship:</p><pre>part engine : Engine <b>default</b> <b>:=</b> standardEngine;</pre><p>These different forms of property value relationships combine the definition of a property with different forms of bindings.</p></section><section class="role-section1" id="Connections"><h2 class="role-section1-title"><span class="role-label"><span class="role-number">12.5</span>. </span>Connections and Bindings</h2><p>A <em>connection</em> between two (or more) items or parts may be an abstract relationship (a <em>link</em>) or a concrete relationship in the form of a <em>link object</em>, which is an instance of an <em>association structure</em>, possibly having its own characteristics. </p><p>A <em>connection type definition</em> defines both an association (e.g., between part types) and a kind of part type that classifies connections between related things, such as items and parts. The features of a connection type that are not <em>connection ends</em> allow to characterize connections, as shown in the following example:</p><pre>part def Hub {...}
+part def Device {...}<b>
+connection def</b> DeviceConnection {
+  <b>end</b> [0..1] part hub : Hub;
+  <b>end</b> [1..*] part device : Device;
+  attribute bandwidth : Real;
+}</pre><p>A connection type often represents logical connections that abstract away details of how the involved parts are connected. For example, plumbing that includes pipes and fittings may be used to connect a pump and a tank. It is sometimes desired to model the connection of the pump to the tank at a more abstract level without including the plumbing. This is viewed as a logical connection between the pump and the tank. </p><p>Alternatively, the plumbing can be modeled as a part where the pump connects to the plumbing, and the plumbing connects to the tank. As a part itself, a connection can contain the plumbing either as a composite feature, or as a reference to the plumbing that is owned by a higher level pump-tank system context. In this way, the logical connection without structure can be refined into a physical connection.</p><p>In the following example, a binary <i>Mounting</i> connection type (or association) allows connecting an axle to two wheels by requiring that its population includes exactly two links for each instance of <i>Axle</i> linking it to two different instances of <i>Wheel.</i></p><figure><div><img alt="???" src="./attributeModeling_files/ExampleModel-MountingAssociationClass.svg" width="600"></div></figure><p>While all end properties of a connection type, here <i>mountingAxle</i> and <i>mountedWheel</i>, have the multiplicity 1, the multiplicities across their respective association lines, marked in yellow, are called their <em>cross multiplicities</em> and are expressed in-between the keyword <i>end</i> and the end property name in the textual notation:</p><pre>part def Axle {...}
+part def Wheel {...}
+<b>connection def</b> Mounting {
+  <b>end</b> <span style="background-color:yellow;">[1]</span> part mountingAxle : Axle;
+  <b>end</b> <span style="background-color:yellow;">[2]</span> part mountedWheel : Wheel;
+}</pre><p>Notice that the cross multiplicity [2] of the end property <i>mountedWheel</i> expresses the constraint that for any instance of <i>Axle</i>, there are exactly two <i>Mounting</i> links in the extent of the connection type linking the axle to two different wheels. Likewise, the cross multiplicity [1] of the end property <i>mountingAxle</i> expresses the constraint that for any instance of <i>Wheel</i>, there is exactly one <i>Mounting</i> link connecting the wheel to an axle.</p><p>A <em>connection property</em> ("usage") is a part property that is also a <a href="https://sim4edu.com/reading/kerml-sysml/introstatestructuremodeling#Connectors">KerML connector</a>, so it is typed by an association, having values that are links.</p><blockquote><p>A connection usage redefines the connection ends from its definition, associating those ends with the specific usage elements that are to be connected. For example, a connection definition could have connection ends that are part usages defined by part definitions Pump and Tank. A usage of this connection definition would then associate corresponding connection ends with specific pump and tank part usages. Supposing that the pump and tank part usages have multiplicity 1, then this means that the single value of the pump usage is to be connected to the single value of the tank usage.</p><p>A connection usage that connects parts is often a logical connection that abstracts away details of how the parts are connected. For example, plumbing that includes pipes and fittings may be used to connect a pump and a tank. It is sometimes desired to model the connection of the pump to the tank at a more abstract level without including the plumbing.</p></blockquote><p>In the following example, the connection property <i>mount</i>, which is typed by the <i>Mounting</i> connection type defined above, requires having exactly two values, each one representing a connection between the <i>AxleAssembly</i>'s axle and one of its wheels:</p><pre>part def AxleAssembly {
+  part axle[1] : Axle;
+  part wheels[2] : Wheel;
+  <b>connection</b> mount[2] : Mounting {
+    <b>end</b> part mountingAxle <b>references</b> axle;
+    <b>end</b> part mountedWheel <b>references</b> wheels;
+  }
+}</pre><p>This syntax also allows the declaration of ternary (or n-ary) connection properties:</p><pre><b>connection def</b> TwoWheelsMounting {
+  <b>end</b> [1] part mountingAxle : Axle;
+  <b>end</b> [1] part leftWheel : Wheel;
+  <b>end</b> [1] part rightWheel : Wheel;
+}
+part def AxleAssembly {
+  part axle[1] : Axle;
+  part leftWheel[1] : Wheel;
+  part rightWheel[1] : Wheel;
+  <b>connection</b> mount[1] : TwoWheelsMounting {
+    <b>end</b> part mountingAxle <b>references</b> axle;
+    <b>end</b> part mountedLeftWheel <b>references</b> leftWheel;
+    <b>end</b> part mountedRightWheel <b>references</b> rightWheel;
+  }
+}</pre><p>There are three shorthand notations for connection properties.</p><ol><li><p>The related features of the connection property may be identified in a comma-separated list, between parentheses (...), preceded by the keyword <i>connect</i>:</p><pre><b>connection</b> mount[1] : TwoWheelsMounting 
+  <b>connect</b> ( mountingAxle <b>::&gt;</b> axle, 
+    mountedLeftWheel <b>::&gt;</b> leftWheel, 
+    mountedRightWheel <b>::&gt;</b> rightWheel
+)</pre><p>Notice that, for brevity, the symbol ::&gt; is used here instead of the keyword <i>references</i>. A declaration without a name and a type allows the simplest syntax for declaring a ternary (or an n-ary) connection property:</p><pre><b>connect</b> ( axle, leftWheel, rightWheel )</pre><p>However, this form of declaration implies that the type of connections is given by the predefined (most general) connection type <i>Connection</i>.</p></li><li><p>If the connection property is typed by a binary association, a further shorthand notation may be used:</p><pre><b>connection</b> mount[2] : Mounting 
+  <b>connect</b> mountingAxle <b>::&gt;</b> axle <b>to</b> mountedWheel <b>::&gt;</b> wheels;</pre><p>Or, further simplified by leaving the redefinition of the connected features implicit:</p><pre><b>connection</b> mount[2] : Mounting 
+  <b>connect</b> axle <b>to</b> wheels;</pre></li><li><p>A binary connection property can also be declared without a name and a type:</p><pre>part def DeviceConfiguration {
+  part hub : Hub;
+  part device : Device;
+  <b>connect</b> hub <b>to</b> device;
+}</pre><p>In this case, the predefined generic connection type <i>BinaryConnection</i> is used as its implicit type.</p></li></ol><h3>Binding Connections</h3><p>A <em>binding connection</em> asserts a value equality between two different features. In KerML, bindings are binary <a href="https://sim4edu.com/reading/kerml-sysml/introstatestructuremodeling#Connectors__bindingConnectors">connectors</a> that require their source and target features to have the same values on each instance of their domain.</p><pre>part def Vehicle {
+  part fuelTank {
+    out fuelFlowOut : Fuel;
+  }
+  part engine {
+    in fuelFlowIn : Fuel;
+  }
+  <b>binding</b> fuelFlowBinding
+    <b>bind</b> fuelTank.fuelFlowOut <b>=</b> engine.fuelFlowIn;
+}</pre><blockquote class="role-attention"><p>In the SysML v2 spec, for terminological reasons, bindings (and successions) are redefined as special kinds of connection "usages". However, semantically, there is no need for such a redefinition. It's preferable to simply keep the KerML concept of a binding as a special kind of connector.</p></blockquote></section><section class="role-section1" id="Ports"><h2 class="role-section1-title"><span class="role-label"><span class="role-number">12.6</span>. </span>Ports and Interfaces</h2><p>A <em>port</em> represents a connection point that can be connected to another port via an <em>interface</em>.</p><h3>Ports as Connection Points</h3><p>Ports are connected with each other for enabling transfers (e.g., of signals or physical quantities) between systems or their parts. The properties of a port specify what can be exchanged in such transfers.</p><blockquote><p>Connected ports must conform: each feature of a port at one end of a connection must have a matching feature on a port at the other end of the connection. Two features match if they have conforming definitions and either both have no direction or they have <em>conjugate</em> directions. The conjugate of direction <i>in</i> is <i>out</i> and vice versa, while direction <i>inout</i> is its own conjugate. A transfer can occur from the <i>out</i> features of one port usage to the matching <i>in</i> features of connected port usages. Transfers can occur in both directions between matching <i>inout</i> features. [7.12.1]</p></blockquote><p>A <em>port type</em> is a KerML "Structure" (object type) and, consequently, a <em>port property</em> ("usage"), as a non-composite feature, references port objects. </p><p>The following example illustrates how the <em>conjugated</em> ports <i>FuelOutPort</i> and <i>FuelInPort</i> match by having the same features with the direction of directed features being reversed:</p><pre><b>port def</b> FuelOutPort {
+  attribute temperature : Real;
+  out item fuelSupply : Fuel;
+}
+<b>port def</b> FuelInPort {
+  attribute temperature : Real;
+  in item fuelSupply : Fuel;
+}
+part def FuelTankAssembly {
+  <b>port</b> fuelTankPort : FuelOutPort;
+}
+part def Engine {
+  <b>port</b> engineFuelPort : FuelInPort;
+}</pre><blockquote><p>Every port definition also implicitly declares a conjugated port definition, which has the same features, except that any directed features have conjugated directions (i.e., <i>in</i> and <i>out</i> are reversed, with <i>inout</i> unchanged). The name of the conjugated port definition is always given by the name of the original port definition with the character ~ prepended, in the namespace of the original port definition. [7.12.3]</p></blockquote><p>Thus, the example above can be rewritten in the following way:</p><pre><b>port def</b> FuelOutPort {
+  attribute temperature : Real;
+  out item fuelSupply : Fuel;
+}
+part def FuelTankAssembly {
+  <b>port</b> fuelTankPort : FuelOutPort;
+}
+part def Engine {
+  <b>port</b> engineFuelPort : <b>~</b>FuelOutPort;
+}</pre><h3>Interfaces</h3><p>An <em>interface</em> type is a connection type for connecting ports (that is, all of its ends are port properties). An <em>interface</em> property ("usage") is a connection property with values being connections between ports. Interface connections allow the flow of information, energy or matter from one port to another.</p><p>In the following example, an anonymous interface property of a <i>DistributedSystem</i> (without a specific type) connects a client port to a server port for allowing request-response signaling:</p><pre>part def DistributedSystem {
+  item def Request;
+  item def Response; 
+  part client {
+    <b>port</b> clientPort;
+    action clientBehavior {
+      send new Request() via clientPort;
+      then accept Response via clientPort;
+    }
+  }
+  part server {
+    <b>port</b> serverPort;
+    action serverBehavior {
+      accept Request via serverPort;
+      then send new Response() via serverPort;
+    }
+  }
+  <b>interface</b> client.clientPort <b>to</b> server.serverPort;
+}</pre><p>Another example (based on an <a href="https://www.se-trends.de/en/interface-modeling-with-sysml-v2-in-syside/">example presented by Michael Jastram</a>) describes an apartment as a complex system such that a device like a toaster is connected to a power outlet via an interface:</p><pre>private import SI::V;
+private import SI::A;
+<b>port def</b> PowerOutletPort {
+  out power :&gt; ISQ::electricPower;
+  attribute voltage :&gt; ISQ::voltage = 230 [V];
+  attribute maxCurrent : ISQ::ElectricCurrentValue = 16 [A];
+}
+<b>port def</b> DevicePowerPort {
+  in power :&gt; ISQ::electricPower;
+  attribute voltage :&gt; ISQ::voltage = 230 [V];
+  attribute maxCurrent : ISQ::ElectricCurrentValue;
+}
+<b>interface def</b> Device2PowerOutletInterface {
+  end port outletPort : PowerOutletPort;
+  end port devicePort : DevicePowerPort;
+}
+part def Apartment {
+  part kitchen {
+    <b>port</b> outletPort : PowerOutletPort;
+  }
+  part toaster {
+    <b>port</b> powerPort : DevicePowerPort {
+      :&gt;&gt; maxCurrent = 2 [A];
+    }
+  }
+  <b>interface</b> : Device2PowerOutletInterface 
+    <b>connect</b> devicePort ::&gt; toaster.powerPort
+    <b>to</b> outletPort ::&gt; kitchen.outletPort;
+}</pre></section></section></main><footer class="page-navigation"><table><tbody><tr><td class="page-navigation-to-previous"><a href="https://sim4edu.com/reading/kerml-sysml/sysml-partintro"><span class="page-navigation-to-previous-icon" title="Previous page
+Part III. The Systems Modeling Language (SysML)"></span></a></td><td class="page-navigation-previous"><span>Part III. The Systems Modeling Language (SysML)</span></td><td class="page-navigation-current"><span>Chapter 12. Modeling the State Structure of a System</span> <span class="page-navigation-current-page">(19/39)</span><a href="https://sim4edu.com/reading/kerml-sysml/toc"><span class="page-navigation-to-toc-icon" title="Table of Contents
+Table of Contents"></span></a><a href="https://sim4edu.com/reading/kerml-sysml/_index"><span class="page-navigation-to-index-icon" title="Index
+Index"></span></a></td><td class="page-navigation-next"><span>Chapter 13. Modeling the Dynamics of a System</span></td><td class="page-navigation-to-next"><a href="https://sim4edu.com/reading/kerml-sysml/introdynamicssysml"><span class="page-navigation-to-next-icon" title="Next page
+Chapter 13. Modeling the Dynamics of a System"></span></a></td></tr></tbody></table></footer><aside class="ad">
+  <div>
+   <p>Get the printable and searchable e-book (PDF)</p>
+   <div style="margin-top:1em"><a href="https://gwagner.gumroad.com/l/kerml-sysml"><img src="./attributeModeling_files/BookCover.jpg" width="169" height="270"></a></div>
+  </div>
+</aside><div><div style="display: none; position: fixed; top: 30px; width: auto; max-width: 100%; text-align: center; left: 50%; transform: translateX(-50%); z-index: 99999999;"><div style="display: inline-block; font-size: 14px; font-weight: bold; border: 1px solid rgb(240, 195, 109); background-color: rgb(249, 237, 190); padding: 0px 10px; border-radius: 2px; box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px;"></div></div></div></body></html>

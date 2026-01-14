@@ -1,0 +1,16 @@
+{
+    "sysml_api": {
+        "host": "http://localhost:8081/api/rest",
+        "project_name": "OttoEngine",
+        "default_part": "fourCylinderEngine"
+    },
+    "sync_settings": {
+        "auto_sync_on_change": false,
+        "sync_direction": "toFusion",
+        "confirm_before_sync": true
+    },
+    "logging": {
+        "enabled": true,
+        "level": "INFO"
+    }
+}

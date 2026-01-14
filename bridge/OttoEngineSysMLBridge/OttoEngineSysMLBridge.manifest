@@ -1,0 +1,13 @@
+{
+    "autodeskProduct": "Fusion360",
+    "type": "addin",
+    "id": "com.ottoengine.sysmlbridge",
+    "author": "SysML v2 Bridge Team",
+    "description": {
+        "": "SysML v2 to Fusion 360 parameter synchronization for OttoEngine project"
+    },
+    "version": "1.0.0",
+    "runOnStartup": false,
+    "supportedOS": "windows|mac",
+    "editEnabled": true
+}
