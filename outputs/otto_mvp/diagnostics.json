@@ -8,9 +8,9 @@
       "bore_m": {
         "heuristic": null,
         "match_type": "direct",
-        "normalized_value": 0.086,
-        "parsed_value": 86.0,
-        "raw_value": 86,
+        "normalized_value": 0.08,
+        "parsed_value": 80.0,
+        "raw_value": 80,
         "source": "raw_params",
         "source_key": "bore",
         "unit": "mm",
@@ -21,8 +21,12 @@
         "match_type": "direct",
         "normalized_value": 10.5,
         "parsed_value": 10.5,
-        "raw_value": 10.5,
-        "source": "raw_params",
+        "raw_value": {
+          "source": "sysml_file",
+          "unit": null,
+          "value": 10.5
+        },
+        "source": "sysml_file",
         "source_key": "compressionRatio",
         "unit": "",
         "unit_conversion": null
@@ -40,13 +44,13 @@
       },
       "rpm": {
         "heuristic": null,
-        "match_type": "direct",
+        "match_type": "override",
         "normalized_value": 3000.0,
         "parsed_value": 3000.0,
-        "raw_value": 3000,
-        "source": "raw_params",
-        "source_key": "rpm",
-        "unit": null,
+        "raw_value": 3000.0,
+        "source": "override",
+        "source_key": "--rpm",
+        "unit": "rpm",
         "unit_conversion": null
       },
       "stroke_m": {
@@ -73,16 +77,18 @@
       }
     },
     "missing": [],
-    "overrides": {}
+    "overrides": {
+      "rpm": 3000.0
+    }
   },
   "metadata": {
-    "commit_id": null,
-    "git_hash": "9445164",
-    "host": null,
+    "commit_id": "cecfd7a6-4c86-4366-8307-fbabfe2aa30e",
+    "git_hash": "9c495d7",
+    "host": "http://localhost:8081/api/rest",
     "part_name": "fourCylinderEngine",
-    "project_id": null,
-    "project_name": null,
-    "source_mode": "offline",
-    "timestamp": "2026-01-22T16:27:14.370839+00:00"
+    "project_id": "cecfd7a6-4c86-4366-8307-fbabfe2aa30e",
+    "project_name": "OttoEngine",
+    "source_mode": "syson",
+    "timestamp": "2026-01-22T16:52:06.327204+00:00"
   }
 }

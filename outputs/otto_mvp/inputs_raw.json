@@ -1,20 +1,29 @@
 {
   "metadata": {
-    "commit_id": null,
-    "git_hash": "9445164",
-    "host": null,
+    "commit_id": "cecfd7a6-4c86-4366-8307-fbabfe2aa30e",
+    "git_hash": "9c495d7",
+    "host": "http://localhost:8081/api/rest",
     "part_name": "fourCylinderEngine",
-    "project_id": null,
-    "project_name": null,
-    "source_mode": "offline",
-    "timestamp": "2026-01-22T16:27:14.370839+00:00"
+    "project_id": "cecfd7a6-4c86-4366-8307-fbabfe2aa30e",
+    "project_name": "OttoEngine",
+    "source_mode": "syson",
+    "timestamp": "2026-01-22T16:52:06.327204+00:00"
   },
   "raw_params": {
-    "bore": 86,
-    "compressionRatio": 10.5,
+    "bore": 80,
+    "compressionRatio": {
+      "source": "sysml_file",
+      "unit": null,
+      "value": 10.5
+    },
+    "crankRadius": 35,
+    "headDiameter": 30,
+    "length": 144,
+    "mass": 18,
     "maxTorque": 200,
     "numberOfCylinders": 4,
-    "rpm": 3000,
-    "stroke": 86
+    "ratedPower": 110,
+    "stroke": 86,
+    "threadSize": 14
   }
 }

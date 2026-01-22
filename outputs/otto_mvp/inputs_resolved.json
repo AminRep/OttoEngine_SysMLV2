@@ -1,6 +1,6 @@
 {
   "inputs": {
-    "bore_m": 0.086,
+    "bore_m": 0.08,
     "compression_ratio": 10.5,
     "n_cylinders": 4,
     "rpm": 3000.0,
@@ -8,13 +8,13 @@
     "torque_nm": 200.0
   },
   "metadata": {
-    "commit_id": null,
-    "git_hash": "9445164",
-    "host": null,
+    "commit_id": "cecfd7a6-4c86-4366-8307-fbabfe2aa30e",
+    "git_hash": "9c495d7",
+    "host": "http://localhost:8081/api/rest",
     "part_name": "fourCylinderEngine",
-    "project_id": null,
-    "project_name": null,
-    "source_mode": "offline",
-    "timestamp": "2026-01-22T16:27:14.370839+00:00"
+    "project_id": "cecfd7a6-4c86-4366-8307-fbabfe2aa30e",
+    "project_name": "OttoEngine",
+    "source_mode": "syson",
+    "timestamp": "2026-01-22T16:52:06.327204+00:00"
   }
 }

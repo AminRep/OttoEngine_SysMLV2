@@ -67,7 +67,7 @@ def _write_json(path: Path, payload: Dict[str, Any]) -> None:
 
 
 def _extract_part_block(text: str, part_name: str) -> Optional[str]:
-    pattern = re.compile(rf"\\bpart\\s+{re.escape(part_name)}\\b")
+    pattern = re.compile(rf"\bpart\s+{re.escape(part_name)}\b")
     lines = text.splitlines()
     in_block = False
     brace_count = 0
@@ -95,19 +95,19 @@ def _extract_part_block(text: str, part_name: str) -> Optional[str]:
 def _parse_sysml_values(text: str) -> Dict[str, Dict[str, Any]]:
     values: Dict[str, Dict[str, Any]] = {}
     pattern = re.compile(
-        r"attribute\\s+:>>\\s+(?P<name>[A-Za-z_][A-Za-z0-9_]*)\\s*=\\s*(?P<value>[^;]+);"
+        r"attribute\s+:>>\s+(?P<name>[A-Za-z_][A-Za-z0-9_]*)\s*=\s*(?P<value>[^;]+);"
     )
 
     for match in pattern.finditer(text):
         name = match.group("name")
         value_text = match.group("value").strip()
 
-        num_match = re.search(r"[-+]?\\d*\\.?\\d+(?:[eE][-+]?\\d+)?", value_text)
+        num_match = re.search(r"[-+]?\d*\.?\d+(?:[eE][-+]?\d+)?", value_text)
         if not num_match:
             continue
 
         value = float(num_match.group(0))
-        unit_match = re.search(r"\\[(.*?)\\]", value_text)
+        unit_match = re.search(r"\[(.*?)\]", value_text)
         unit = unit_match.group(1).strip() if unit_match else None
 
         values[name] = {"value": value, "unit": unit, "source": "sysml_file"}
