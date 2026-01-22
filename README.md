@@ -34,6 +34,37 @@ The generated script is written next to the bridge script as `fusion_script_<par
 ### 4) Use the Fusion 360 add-in
 Follow `bridge/OttoEngineSysMLBridge/README.md`, then edit `bridge/OttoEngineSysMLBridge/config.json` for your API host and part name.
 
+## OttoEngine MVP simulation
+This MVP pulls key inputs from SysON and runs a lightweight deterministic analysis in Python.
+
+### Prerequisites
+- Python 3.9+
+- `requests` (optional; SysMLv2Client falls back to urllib)
+- `pytest` (only if running tests)
+
+### Run
+```bash
+python tools/run_otto_mvp.py --host http://localhost:8081/api/rest --project OttoEngine --part fourCylinderEngine --out outputs/otto_mvp --rpm 3000
+```
+
+### Outputs
+- `outputs/otto_mvp/inputs_raw.json`: raw parameters from SysON (or offline input)
+- `outputs/otto_mvp/inputs_resolved.json`: canonical inputs used for simulation
+- `outputs/otto_mvp/diagnostics.json`: mapping details, assumptions, and overrides
+- `outputs/otto_mvp/results.json`: computed metrics (displacement, mean piston speed, efficiency, optional power)
+- `outputs/otto_mvp/report.md`: human-readable summary
+
+### Offline mode
+If SysON is unavailable, use the fixture:
+```bash
+python tools/run_otto_mvp.py --offline tools/fixtures/ottoengine_raw_params.json --out outputs/otto_mvp
+```
+
+### MATLAB extension (later)
+The MVP outputs stable JSON artifacts (`inputs_resolved.json` and `results.json`). A future MATLAB
+integration can read the same canonical inputs (bore_m, stroke_m, compression_ratio, n_cylinders,
+rpm) and append MATLAB-specific results without changing the CLI contract.
+
 ## Project status
 - SysML model: complete and annotated with Fusion metadata placeholders.
 - API tooling: working client for listing projects, extracting parameters, and generating Fusion scripts.

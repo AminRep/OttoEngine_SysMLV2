@@ -1,0 +1,8 @@
+{
+  "bore": 86,
+  "compressionRatio": 10.5,
+  "maxTorque": 200,
+  "numberOfCylinders": 4,
+  "rpm": 3000,
+  "stroke": 86
+}

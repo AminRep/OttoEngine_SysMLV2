@@ -1,0 +1,88 @@
+{
+  "diagnostics": {
+    "assumptions": [
+      "bore_m: applied mm_to_m",
+      "stroke_m: applied mm_to_m"
+    ],
+    "matches": {
+      "bore_m": {
+        "heuristic": null,
+        "match_type": "direct",
+        "normalized_value": 0.086,
+        "parsed_value": 86.0,
+        "raw_value": 86,
+        "source": "raw_params",
+        "source_key": "bore",
+        "unit": "mm",
+        "unit_conversion": "mm_to_m"
+      },
+      "compression_ratio": {
+        "heuristic": null,
+        "match_type": "direct",
+        "normalized_value": 10.5,
+        "parsed_value": 10.5,
+        "raw_value": 10.5,
+        "source": "raw_params",
+        "source_key": "compressionRatio",
+        "unit": "",
+        "unit_conversion": null
+      },
+      "n_cylinders": {
+        "heuristic": null,
+        "match_type": "direct",
+        "normalized_value": 4,
+        "parsed_value": 4.0,
+        "raw_value": 4,
+        "source": "raw_params",
+        "source_key": "numberOfCylinders",
+        "unit": "",
+        "unit_conversion": null
+      },
+      "rpm": {
+        "heuristic": null,
+        "match_type": "direct",
+        "normalized_value": 3000.0,
+        "parsed_value": 3000.0,
+        "raw_value": 3000,
+        "source": "raw_params",
+        "source_key": "rpm",
+        "unit": null,
+        "unit_conversion": null
+      },
+      "stroke_m": {
+        "heuristic": null,
+        "match_type": "direct",
+        "normalized_value": 0.086,
+        "parsed_value": 86.0,
+        "raw_value": 86,
+        "source": "raw_params",
+        "source_key": "stroke",
+        "unit": "mm",
+        "unit_conversion": "mm_to_m"
+      },
+      "torque_nm": {
+        "heuristic": null,
+        "match_type": "direct",
+        "normalized_value": 200.0,
+        "parsed_value": 200.0,
+        "raw_value": 200,
+        "source": "raw_params",
+        "source_key": "maxTorque",
+        "unit": "N*m",
+        "unit_conversion": null
+      }
+    },
+    "missing": [],
+    "overrides": {}
+  },
+  "metadata": {
+    "commit_id": null,
+    "git_hash": "9445164",
+    "host": null,
+    "part_name": "fourCylinderEngine",
+    "project_id": null,
+    "project_name": null,
+    "source_mode": "offline",
+    "timestamp": "2026-01-22T16:27:14.370839+00:00"
+  }
+}

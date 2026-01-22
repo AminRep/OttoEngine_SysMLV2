@@ -1,0 +1,20 @@
+{
+  "inputs": {
+    "bore_m": 0.086,
+    "compression_ratio": 10.5,
+    "n_cylinders": 4,
+    "rpm": 3000.0,
+    "stroke_m": 0.086,
+    "torque_nm": 200.0
+  },
+  "metadata": {
+    "commit_id": null,
+    "git_hash": "9445164",
+    "host": null,
+    "part_name": "fourCylinderEngine",
+    "project_id": null,
+    "project_name": null,
+    "source_mode": "offline",
+    "timestamp": "2026-01-22T16:27:14.370839+00:00"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "metadata": {
+    "commit_id": null,
+    "git_hash": "9445164",
+    "host": null,
+    "part_name": "fourCylinderEngine",
+    "project_id": null,
+    "project_name": null,
+    "source_mode": "offline",
+    "timestamp": "2026-01-22T16:27:14.370839+00:00"
+  },
+  "results": {
+    "mean_piston_speed_m_s": 8.6,
+    "otto_efficiency": 0.609587,
+    "power_kw": 62.831853,
+    "total_displacement_cm3": 1998.228857,
+    "total_displacement_m3": 0.001998
+  }
+}
