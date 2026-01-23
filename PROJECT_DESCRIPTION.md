@@ -45,7 +45,6 @@ graph TD
     style A fill:#f9f,stroke:#333,stroke-width:2px
     style D fill:#ccf,stroke:#333,stroke-width:2px
     style E fill:#cfc,stroke:#333,stroke-width:2px
-
 ```
 *   **Der Ingenieur** modifiziert das **SysML-Modell**.
 *   Die **OttoEngineSysMLBridge** (ein Fusion 360 Add-in) liest die Änderungen über die **SysML v2 API**.
